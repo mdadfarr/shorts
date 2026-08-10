@@ -1,14 +1,19 @@
 {
   "manifest_version": 3,
   "name": "Short-Form Blocker",
-  "version": "1.0",
+  "version": "1.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtvn2u+bjACnlIwFiUohahArbgp0j+fP3gwNMzz8QEGVO7UuK4Nn231UsOz9GH6ePb/tgXSYBpxSp1jv2Dvh361NbqhhXkbK9oYZzU/3A1LPC1RelBIqBGahcaY3k7AQ4TfCp1sJAglnPhAoR4J9eQqXoDYxl1DXKayjCc60hgMdZMx3ejbDrze0rIefQ7xKlsxKB00TtRopw93ez67RRWmMxRk/e11z80w8lFHZh66wcrxVTzfnu5PVMJ0RTQsh8rn97FsnsOoRTq28/LsVvp9bh0ciov85uH4eAxQ3sexiM9KPQ8oYuh0U3QbpzUTKbp4wYPAnA0rtR9KApfc+jhQIDAQAB",
   "description": "Blocks YouTube Shorts, TikTok, Instagram Reels, and Facebook Reels.",
-  "permissions": ["storage"],
-  "host_permissions": [
-    "*://*.youtube.com/*",
-    "*://*.tiktok.com/*",
-    "*://*.instagram.com/*",
-    "*://*.facebook.com/*"
+  "permissions": ["storage", "alarms", "tabs", "declarativeNetRequest", "management"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["restore.html"],
+      "matches": ["<all_urls>"]
+    }
   ],
   "content_scripts": [
     {

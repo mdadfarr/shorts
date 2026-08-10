@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blocker offline</title>
+  <style>
+    :root {
+      --bg: #14110f;
+      --fg: #f2ece4;
+      --dim: #8f867c;
+      --accent: #c9603f;
+      --panel: #1e1a17;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    main {
+      max-width: 540px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 16px; color: var(--dim); }
+    ul#missing {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px;
+    }
+    ul#missing li {
+      background: var(--panel);
+      border-left: 3px solid var(--accent);
+      padding: 11px 14px;
+      margin-bottom: 8px;
+      border-radius: 0 5px 5px 0;
+      color: var(--fg);
+    }
+    ul#missing li small {
+      display: block;
+      color: var(--dim);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      padding: 13px 22px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-family: inherit;
+    }
+    button:hover { filter: brightness(1.1); }
+    button:disabled { opacity: 0.45; cursor: default; }
+    #status {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--dim);
+      min-height: 20px;
+    }
+    #escalation {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #2c2724;
+      font-size: 14px;
+      color: var(--dim);
+    }
+    #escalation strong { color: var(--accent); font-weight: 600; }
+    code {
+      background: var(--panel);
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="headline">A blocker is switched off</h1>
+    <p id="lede">The other two noticed. Browsing stays blocked until it's back on.</p>
+
+    <ul id="missing"></ul>
+
+    <button id="restore" disabled>Checking…</button>
+    <div id="status"></div>
+
+    <div id="escalation"></div>
+  </main>
+  <script src="restore.js"></script>
+</body>
+</html>
